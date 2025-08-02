@@ -1,0 +1,25 @@
+{
+	"name": "@recruit/bot",
+	"private": "true",
+	"type": "commonjs",
+	"files": [
+		"dist",
+		"src",
+		"!src/**/*.test.ts"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./src/index.ts"
+		}
+	},
+	"scripts": {
+		"dev": "DOTENV_CONFIG_PATH=../.env tsx -r dotenv/config src/index.ts",
+		"type-check": "tsc --noEmit -p ."
+	},
+	"dependencies": {
+		"@recruit/db": "workspace:*",
+		"@recruit/lib": "workspace:*",
+		"@recruit/replace": "workspace:*"
+	}
+}

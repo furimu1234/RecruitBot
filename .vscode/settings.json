@@ -1,0 +1,27 @@
+{
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.biome": "always",
+		"source.organizeImports.biome": "always"
+	},
+	"terminal.integrated.fontFamily": "monospace",
+	"[javascript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"biome_lsp.trace.server": "verbose",
+	"editor.defaultFoldingRangeProvider": "biomejs.biome",
+	"biome.rename": true,
+	"workbench.editor.wrapTabs": true,
+	"discord.enabled": true,
+	
+}

@@ -1,0 +1,46 @@
+{
+	"name": "recruit-bot",
+	"description": "募集BOT",
+	"private": true,
+	"version": "0.1.0",
+	"author": "furimu",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"watch": "pnpm -r --filter '@recruit/*' run watch",
+		"botLogin": "pnpm run --filter \"./packages/bot\" --parallel dev",
+		"migrate": "pnpm --filter db run migrate",
+		"drizzle": "pnpm --filter db run drizzle",
+		"generate": "pnpm --filter db run generate && pnpm --filter db run migrate",
+		"type-check": "pnpm -F \"@recruit/*\" type-check",
+		"build": "pnpm -F \"@recruit/*\" build",
+		"lint": "pnpm biome check --write . && pnpm biome check --write .",
+		"dbInit": "pnpm --filter sandbox deleteSql "
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^20.17.32",
+		"@types/pg": "^8.15.4",
+		"dotenv-cli": "^8.0.0",
+		"tsx": "^4.0.0",
+		"typescript": "^5.4.0"
+	},
+	"dependencies": {
+		"@types/luxon": "^3.6.2",
+		"discord.js": "^14.19.2",
+		"dotenv": "^16.5.0",
+		"drizzle-kit": "^0.31.0",
+		"drizzle-orm": "^0.43.1",
+		"luxon": "^3.6.1",
+		"pg": "^8.15.6",
+		"pino": "^9.6.0",
+		"pino-pretty": "^13.0.0",
+		"zod": "^3.25.67"
+	},
+	"workspaces": [
+		"packages/*"
+	]
+}

@@ -1,0 +1,26 @@
+	{
+		"name": "@recruit/db",
+		"private": "true",
+		"type": "module",
+		"main": "./src/index.ts",
+		"files": [
+			"dist",
+			"src",
+			"!src/**/*.test.ts"
+		],
+		"exports": {
+			".": "./src/index.ts"
+		},
+		"scripts": {
+			"watch": "tsc -p . --watch",
+			"build": "tsc -p .",
+			"type-check": "tsc --noEmit -p .",
+			"generate": "drizzle-kit generate --name=recruit",
+			"migrate": "drizzle-kit migrate",
+			"drizzle": "drizzle-kit",
+			"initSql": "tsx -r ./initSqls/index.ts"
+		},
+		"dependencies": {
+			"@recruit/lib": "workspace:*"
+		}
+	}

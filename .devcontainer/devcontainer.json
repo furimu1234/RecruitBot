@@ -1,0 +1,27 @@
+{
+	"name": "recruit-bot",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "recruit-bot",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"forwardPorts": [4983],
+	"postCreateCommand": "pnpm i",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome",
+				//"ms-vscode.vscode-typescript-next",
+				"ms-azuretools.vscode-docker",
+				"Reuben.root-bear",
+				"PKief.material-icon-theme",
+				"biomejs.biome",
+				"bierner.markdown-preview-github-styles"
+			]
+		}
+	},
+	"mounts": [
+		"source=${env:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"
+	],
+	"remoteEnv": {
+		"SSH_AUTH_SOCK": "/ssh-agent"
+	}
+}

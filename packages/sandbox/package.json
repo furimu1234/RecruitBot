@@ -1,0 +1,22 @@
+{
+	"name": "@recruit/sandbox",
+	"private": "true",
+	"type": "module",
+	"main": "./src/index.ts",
+	"files": [
+		"dist",
+		"src",
+		"!src/**/*.test.ts"
+	],
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {
+		"deleteSql": "tsx -r dotenv/config src/index.ts",
+		"type-check": "tsc --noEmit -p ."
+	},
+	"dependencies": {
+		"@recruit/db": "workspace:*",
+		"@recruit/lib": "workspace:*"
+	}
+}
