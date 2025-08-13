@@ -85,7 +85,7 @@ export async function execute(interaction: ButtonInteraction): Promise<void> {
 	if (!selection) {
 		sendMessageThenDelete(
 			{
-				sleepSecond: 15,
+				sleepSecond:	 15,
 				content: '3分間ロールの選択がないためキャンセルされました。',
 			},
 			interaction,

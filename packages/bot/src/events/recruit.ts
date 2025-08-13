@@ -30,6 +30,9 @@ export async function execute(interaction: ButtonInteraction): Promise<void> {
 
 	if (!role) return;
 	const member = await getMember(guild, { user: interaction.user });
+	if (!member) return;
+	const voiceChannel = member.voice.channel;
+	if (!voiceChannel) return;
 
 	const store = await container.current.getDataStore();
 
@@ -73,13 +76,14 @@ export async function execute(interaction: ButtonInteraction): Promise<void> {
 
 	//メッセージ変換
 	const discordReplace = DiscordReplace();
+
 	originalMessage = discordReplace.originalChannelMention(
 		originalMessage,
-		channel,
+		voiceChannel,
 	);
 	originalMessage = discordReplace.originalChannelName(
 		originalMessage,
-		channel,
+		voiceChannel,
 	);
 	originalMessage = discordReplace.originalRoleMention(originalMessage, role);
 	originalMessage = discordReplace.originalRoleName(originalMessage, role);
@@ -103,8 +107,6 @@ export async function execute(interaction: ButtonInteraction): Promise<void> {
 		content: '募集を投稿しました!',
 		flags: MessageFlags.Ephemeral,
 	});
-	if (!member) return;
-	const voiceChannel = member.voice.channel;
 
 	if (!voiceChannel) return;
 	await store.do(async (db) => {

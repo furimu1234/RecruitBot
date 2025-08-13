@@ -1,4 +1,4 @@
-import { deleteAutoSend } from '@recruit/db';
+import { deleteAutoSend, getAutoSendInfo } from '@recruit/db';
 import { Events, type VoiceState } from 'discord.js';
 import { container } from '../container';
 
@@ -15,13 +15,19 @@ export async function execute(
 
 	const store = container.current.getDataStore();
 
-	if (before.channel && before.member) {
+	if (before.channel) {
 		const beforeChannel = before.channel;
+		const beforeChannelId = before.channel.id;
+
+		const model = await store.do(async (db) => {
+			return await getAutoSendInfo(db, { targetId: beforeChannelId });
+		});
+
+		if (!model) return;
 
 		if (Array.from(beforeChannel.members.values()).length !== 0) {
 			return;
 		}
-		const beforeChannelId = before.channel.id;
 
 		await store.do(async (db) => {
 			await deleteAutoSend(db, beforeChannelId);
